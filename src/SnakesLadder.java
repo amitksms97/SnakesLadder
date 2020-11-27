@@ -6,21 +6,23 @@ public class SnakesLadder {
 	static final int finalPos=100;
 	Scanner sc = new Scanner(System.in);
 	Random rand=new Random();
-	static int rollDice;
-	static int position;
-	static int count;
+	static int rollDice, position, count1, count2, finalposition1, finalposition2, rolldice1, rolldice2;
 	public SnakesLadder() {
 		System.out.println("Welcome to Snake and Ladder Game");
 		position=startPos;
-		count=startPos;
+		finalposition1=startPos;
+		finalposition2=startPos;
+		count1=startPos;
+		count2=startPos;
 	}
-	public void rollingDice()
+	public int rollingDice()
 	{
 		rollDice=rand.nextInt(6)+1;
-		count++;
+		return rollDice;
 	}
 	public void options()
 	{
+		position=0;
 		int option=rand.nextInt(3);
 		switch (option) {
 		case 0:
@@ -30,10 +32,6 @@ public class SnakesLadder {
 		case 1:
 			System.out.println("Ladder");
 			position=position+rollDice;
-			if(position>100)
-			{
-				position=position-rollDice;
-			}
 			System.out.println("Position Incremented by:"+rollDice);
 		break;
 		case 2:
@@ -47,17 +45,48 @@ public class SnakesLadder {
 			System.out.println("Invalid Input");
 		}
 	}
+	
+	public void playerOne()
+	{
+		rolldice1=rollingDice();
+		count1++;
+		options();
+		finalposition1=finalposition1+position;
+		if(finalposition1>100)
+		{
+			finalposition1=finalposition1-rolldice1;
+		}
+		System.out.println("Player 1 New Position: "+finalposition1);
+	}
+	public void playerTwo()
+	{
+		rolldice2=rollingDice();
+		count2++;
+		options();
+		finalposition2=finalposition2+position;
+		if(finalposition2>100)
+		{
+			finalposition2=finalposition2-rolldice2;
+		}
+		System.out.println("Player 2 New Position: "+finalposition2);
+	}
 	public static void main(String[] args) {
 		SnakesLadder obj= new SnakesLadder();
 		System.out.println("Initial Position: "+startPos);
-		while(position<finalPos)
+		while(finalposition1<finalPos && finalposition2<finalPos)
 		{
-		obj.rollingDice();
-		obj.options();
-		System.out.println("New Position: "+position);
+		obj.playerOne();
+		obj.playerTwo();
 		}
-		System.out.println("The player has won: " +position);
-		System.out.println("The number of times the dice was rolled " +count +" times");
+		if(finalposition1==100) {
+		System.out.println("Player1 has won: ");
+		System.out.println("The number of times the dice was rolled " +count1 +" times");
+		}
+		else if(finalposition2==100) {
+			System.out.println("Player2 has won: ");
+			System.out.println("The number of times the dice was rolled " +count2 +" times");
+		}
+		else
+			System.out.println("Bad luck");
 	}
-
 }
