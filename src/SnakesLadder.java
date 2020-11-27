@@ -3,6 +3,7 @@ import java.util.*;
 public class SnakesLadder {
 	
 	static final int startPos=0;
+	static final int finalPos=100;
 	Scanner sc = new Scanner(System.in);
 	Random rand=new Random();
 	static int rollDice;
@@ -19,21 +20,21 @@ public class SnakesLadder {
 	{
 		int option=rand.nextInt(3);
 		switch (option) {
-		case 0: 
+		case 0:
 			System.out.println("No Play");
-			position=0;
+			System.out.println("Position does not change.");
 		break;
 		case 1:
 			System.out.println("Ladder");
 			position=position+rollDice;
-			if(position>100)
-				position=100;
+			System.out.println("Position Incremented by:"+rollDice);
 		break;
 		case 2:
 			System.out.println("Snakes");
 			position=position-rollDice;
+			System.out.println("Position Decremented by:"+rollDice);
 			if(position<0)
-			position=0;
+			position=startPos;
 			break;
 		default:
 			System.out.println("Invalid Input");
@@ -42,10 +43,12 @@ public class SnakesLadder {
 	public static void main(String[] args) {
 		SnakesLadder obj= new SnakesLadder();
 		System.out.println("Initial Position: "+startPos);
+		while(position<=finalPos)
+		{
 		obj.rollingDice();
 		obj.options();
 		System.out.println("New Position: "+position);
-		
+		}
 
 	}
 
