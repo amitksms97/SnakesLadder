@@ -6,7 +6,7 @@ public class SnakesLadder {
 		position=0;
 	}
 	public static void main(String[] args) {
-		//SnakesLadder obj= new SnakesLadder();
+		SnakesLadder obj= new SnakesLadder();
 		System.out.println(position);
 
 	}
