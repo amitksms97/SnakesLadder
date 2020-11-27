@@ -9,7 +9,7 @@ public class SnakesLadder {
 	static int position;
 	public SnakesLadder() {
 		System.out.println("Welcome to Snake and Ladder Game");
-		position=0;
+		position=startPos;
 	}
 	public void rollingDice()
 	{
