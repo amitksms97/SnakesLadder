@@ -8,13 +8,16 @@ public class SnakesLadder {
 	Random rand=new Random();
 	static int rollDice;
 	static int position;
+	static int count;
 	public SnakesLadder() {
 		System.out.println("Welcome to Snake and Ladder Game");
 		position=startPos;
+		count=startPos;
 	}
 	public void rollingDice()
 	{
 		rollDice=rand.nextInt(6)+1;
+		count++;
 	}
 	public void options()
 	{
@@ -54,6 +57,7 @@ public class SnakesLadder {
 		System.out.println("New Position: "+position);
 		}
 		System.out.println("The player has won: " +position);
+		System.out.println("The number of times the dice was rolled " +count +" times");
 	}
 
 }
