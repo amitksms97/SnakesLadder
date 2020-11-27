@@ -1,7 +1,8 @@
 import java.util.Random;
 import java.util.*;
 public class SnakesLadder {
-
+	
+	static final int startPos=0;
 	Scanner sc = new Scanner(System.in);
 	Random rand=new Random();
 	static int rollDice;
@@ -25,6 +26,8 @@ public class SnakesLadder {
 		case 1:
 			System.out.println("Ladder");
 			position=position+rollDice;
+			if(position>100)
+				position=100;
 		break;
 		case 2:
 			System.out.println("Snakes");
@@ -38,7 +41,7 @@ public class SnakesLadder {
 	}
 	public static void main(String[] args) {
 		SnakesLadder obj= new SnakesLadder();
-		System.out.println("Initial Position: "+position);
+		System.out.println("Initial Position: "+startPos);
 		obj.rollingDice();
 		obj.options();
 		System.out.println("New Position: "+position);
