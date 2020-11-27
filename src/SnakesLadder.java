@@ -27,6 +27,10 @@ public class SnakesLadder {
 		case 1:
 			System.out.println("Ladder");
 			position=position+rollDice;
+			if(position>100)
+			{
+				position=position-rollDice;
+			}
 			System.out.println("Position Incremented by:"+rollDice);
 		break;
 		case 2:
@@ -43,13 +47,13 @@ public class SnakesLadder {
 	public static void main(String[] args) {
 		SnakesLadder obj= new SnakesLadder();
 		System.out.println("Initial Position: "+startPos);
-		while(position<=finalPos)
+		while(position<finalPos)
 		{
 		obj.rollingDice();
 		obj.options();
 		System.out.println("New Position: "+position);
 		}
-
+		System.out.println("The player has won: " +position);
 	}
 
 }
