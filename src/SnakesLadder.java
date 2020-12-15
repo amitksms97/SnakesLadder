@@ -29,15 +29,16 @@ public class SnakesLadder {
             case 1 -> {
                 System.out.println("Ladder");
                 System.out.println("Mandatory Dice roll value: "+ rollDice);
-                int newRoll=rollingDice();
+                int newRoll=rand.nextInt(6)+1; // ladder value
                 System.out.println("Ladder Dice roll value: "+ newRoll);
                 position = position + rollDice + newRoll;
                 System.out.println("Position Incremented by:" + (rollDice + newRoll));
             }
             case 2 -> {
                 System.out.println("Snakes");
+                System.out.println("Mandatory Dice roll value: "+ rollDice);
                 position = position - rollDice;
-                System.out.println("Position Decremented by:" + rollDice);
+                System.out.println("Position Decremented by: " + rollDice);
                 if (position < 0)
                     position = START_POSITION;
             }
