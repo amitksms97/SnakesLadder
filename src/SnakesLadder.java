@@ -3,7 +3,7 @@ public class SnakesLadder {
     static final int START_POSITION=0;
     static final int FINAL_POSITION=100;
     Random rand=new Random();
-    static int rollDice, position, count1, count2, finalPosition1, finalPosition2, rollDice1, rollDice2;
+    static int rollDice, position, count1, count2, finalPosition1, finalPosition2, rollDice1, rollDice2, newRoll;
     public SnakesLadder() {
         System.out.println("Welcome to Snake and Ladder Game");
         position=START_POSITION;
@@ -11,6 +11,7 @@ public class SnakesLadder {
         finalPosition2=START_POSITION;
         count1=START_POSITION;
         count2=START_POSITION;
+        newRoll=START_POSITION;
     }
     public int rollingDice()
     {
@@ -29,7 +30,7 @@ public class SnakesLadder {
             case 1 -> {
                 System.out.println("Ladder");
                 System.out.println("Mandatory Dice roll value: "+ rollDice);
-                int newRoll=rand.nextInt(6)+1; // ladder value
+                newRoll=rand.nextInt(6)+1; // ladder value
                 System.out.println("Ladder Dice roll value: "+ newRoll);
                 position = position + rollDice + newRoll;
                 System.out.println("Position Incremented by:" + (rollDice + newRoll));
@@ -54,7 +55,7 @@ public class SnakesLadder {
         finalPosition1=finalPosition1+position;
         if(finalPosition1>100)
         {
-            finalPosition1=finalPosition1-rollDice;
+            finalPosition1=finalPosition1-(rollDice + newRoll);
         }
         System.out.println("Player 1 New Position: "+finalPosition1);
     }
@@ -66,7 +67,7 @@ public class SnakesLadder {
         finalPosition2=finalPosition2+position;
         if(finalPosition2>100)
         {
-            finalPosition2=finalPosition2-rollDice2;
+            finalPosition2=finalPosition2-(rollDice + newRoll);
         }
         System.out.println("Player 2 New Position: "+finalPosition2);
     }
